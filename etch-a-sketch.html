@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Etch-a-sketch </title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>
+          Etch-a-sketch
+        </h1>
+        <button> Clear </button>
+        <br><br>
+        <div id="container">
+            
+        </div>
+    <script>
+        var container = document.querySelector('#container');
+        var n = 16;
+        dibujar(n);
+
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', (e) => {
+            var list = document.getElementById("container");
+            while (list.hasChildNodes()) {
+                list.removeChild(list.firstChild);
+            }
+            var squares = prompt("how many squares?");
+            n = squares;
+            dibujar(n);
+        });
+
+    function dibujar(n)
+    {
+
+        container.setAttribute('style', 'display:flex; width: 960px; flex-wrap:wrap');  
+        for (f = 0; f < n; ++f) {
+            for (c = 0; c < n; ++c) {
+
+            var content = document.createElement('div');
+            content.classList.add('content');
+
+            content.setAttribute('style', 'width: '+960/n+'px; height: '+960/n+'px; background-color: #5CC8D7FF');
+            container.appendChild(content);
+            }
+        }
+        
+        const divs = document.querySelectorAll('div');
+        divs.forEach((div) => {
+            div.addEventListener('mouseenter', (e) => {
+                event.target.style.background = "#B1624EFF";
+            });
+        });
+    }       
+
+    </script>    
+    </body>
+
+</html>
